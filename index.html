@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teachers Interview Drive 2026 - Scan QR Code</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="logo-container">
+                <i class="fas fa-chalkboard-teacher logo-icon"></i>
+                <h1>Teachers Interview Drive 2026</h1>
+            </div>
+            <div class="header-info">
+                <p><i class="fas fa-calendar-alt"></i> Academic Year: 2026-2027</p>
+                <p><i class="fas fa-clock"></i> Last Date: 30 June 2026</p>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <div class="qr-section">
+                <div class="qr-container">
+                    <div class="qr-code">
+                        <!-- Generated QR Code will appear here -->
+                        <div id="qrcode"></div>
+                        <p class="qr-instruction">Scan this QR code to register</p>
+                    </div>
+                    <div class="qr-info">
+                        <h2><i class="fas fa-qrcode"></i> Scan to Register</h2>
+                        <p class="highlight">Registration Portal for Teaching Positions</p>
+                        
+                        <div class="steps">
+                            <div class="step">
+                                <div class="step-number">1</div>
+                                <div class="step-content">
+                                    <h3>Scan QR Code</h3>
+                                    <p>Use your phone's camera to scan the QR code</p>
+                                </div>
+                            </div>
+                            <div class="step">
+                                <div class="step-number">2</div>
+                                <div class="step-content">
+                                    <h3>Fill Registration</h3>
+                                    <p>Complete the registration form with your details</p>
+                                </div>
+                            </div>
+                            <div class="step">
+                                <div class="step-number">3</div>
+                                <div class="step-content">
+                                    <h3>Get Coupon Code</h3>
+                                    <p>Receive unique coupon code for online test</p>
+                                </div>
+                            </div>
+                            <div class="step">
+                                <div class="step-number">4</div>
+                                <div class="step-content">
+                                    <h3>Take Online Test</h3>
+                                    <p>Complete computer-based assessment</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="manual-entry">
+                            <h3><i class="fas fa-keyboard"></i> Manual Entry</h3>
+                            <p>If you have a coupon code, enter it below:</p>
+                            <div class="coupon-input">
+                                <input type="text" id="couponCode" placeholder="Enter your coupon code" maxlength="10">
+                                <button onclick="redirectToTest()" class="btn">
+                                    <i class="fas fa-arrow-right"></i> Start Test
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="info-sections">
+                <div class="info-card">
+                    <i class="fas fa-bullhorn"></i>
+                    <h3>Available Positions</h3>
+                    <ul>
+                        <li><strong>PRT</strong> (Primary Teacher)</li>
+                        <li><strong>TGT</strong> (Trained Graduate Teacher)</li>
+                    </ul>
+                </div>
+                
+                <div class="info-card">
+                    <i class="fas fa-book"></i>
+                    <h3>Subjects Offered</h3>
+                    <div class="subjects">
+                        <div>
+                            <h4>PRT</h4>
+                            <p>Maths, EVS, CS, Marathi, Hindi, English</p>
+                        </div>
+                        <div>
+                            <h4>TGT</h4>
+                            <p>Maths, Physics, Chemistry, Biology, SST, CS, Languages</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="info-card">
+                    <i class="fas fa-clipboard-check"></i>
+                    <h3>Test Pattern</h3>
+                    <ul>
+                        <li>Teacher Aptitude (5 Questions)</li>
+                        <li>Computer Knowledge (5 Questions)</li>
+                        <li>Basic English (5 Questions)</li>
+                        <li>Classroom Management (5 Questions)</li>
+                        <li>Subject Specific (20 Questions)</li>
+                        <li>Total: 40 Questions</li>
+                    </ul>
+                </div>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <p>© 2026 Teachers Recruitment Board. All rights reserved.</p>
+            <p class="contact">
+                <i class="fas fa-phone"></i> Helpline: 1800-XXX-XXXX | 
+                <i class="fas fa-envelope"></i> Email: support@teachers2026.edu
+            </p>
+            <p class="security-note">
+                <i class="fas fa-shield-alt"></i> Secure & Confidential System
+            </p>
+        </footer>
+    </div>
+
+    <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+    <script src="script.js"></script>
+    <script>
+        // Generate QR Code
+        const registrationUrl = window.location.origin + '/register.html';
+        new QRCode(document.getElementById("qrcode"), {
+            text: registrationUrl,
+            width: 200,
+            height: 200,
+            colorDark: "#2c3e50",
+            colorLight: "#ffffff",
+            correctLevel: QRCode.CorrectLevel.H
+        });
+
+        function redirectToTest() {
+            const couponCode = document.getElementById('couponCode').value.trim();
+            if (couponCode) {
+                sessionStorage.setItem('couponCode', couponCode);
+                window.location.href = 'test.html';
+            } else {
+                alert('Please enter a valid coupon code');
+            }
+        }
+    </script>
+</body>
+</html>
